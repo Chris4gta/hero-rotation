@@ -33,65 +33,6 @@ local Settings = {
   Enhancement = HR.GUISettings.APL.Shaman.Enhancement
 }
 
--- Spells
-if not Spell.Shaman then Spell.Shaman = {} end
-Spell.Shaman.Enhancement = {
-  -- Racials
-
-  -- Abilities Shaman
-  Bloodlust = Spell(2825),
-  ChainLightning = Spell(188443),
-  EarthElemental = Spell(198103),
-  FlameShock = Spell(188389),
-  FlamentongueWeapon = Spell(318038),
-  FrostShock = Spell(196840),
-  LightningBolt = Spell(188196),
-  LightningShield = Spell(192106),
-  -- Abilities Enhancement
-  CrashLightning = Spell(187874),
-  FeralSpirit = Spell(51533),
-  LavaLash = Spell(60103),
-  Stormstrike = Spell(17364),
-  Windstrike = Spell(115356),
-  WindfuryTotem = Spell(8512),
-  WindfuryTotemBuff = Spell(327942),
-  WindfuryWeapon = Spell(33757),
-  MaelstromWeapon = Spell(344179),
-  CrashLightningBuff = Spell(187878),
-
-  -- Talents
-  Ascendance = Spell(114051),
-  Sundering = Spell(197214),
-  Hailstorm = Spell(334195),
-  HailstormBuff = Spell(334196),
-  Stormkeeper = Spell(320137),
-  StormkeeperBuff = Spell(320137),
-  EarthenSpike = Spell(188089),
-  FireNova = Spell(333974),
-  LashingFlames = Spell(334046),
-  ElementalBlast = Spell(117014),
-  Stormflurry = Spell(344357),
-  HotHand = Spell(201900),
-  HotHandbuff = Spell(215785),
-  IceStrike = Spell(342240),
-  CrashingStorm = Spell(192246),
-  ElementalSpirits = Spell(262624),
-  ForcefulWinds = Spell(262647),
-  -- Artifact
-
-  -- Defensive
-  AstralShift = Spell(10871),
-
-  -- Utility
-  CapacitorTotem = Spell(192058)
-
-  -- Legendaries
-
-  -- Misc
-
-  -- Macros
-
-}
 local S = Spell.Shaman.Enhancement
 
 -- Items
@@ -128,12 +69,15 @@ local function precombat()
   --actions.precombat+=/flametongue_weapon
   --actions.precombat+=/lightning_shield
   if S.LightningShield:IsCastable() and Player:BuffDown(S.LightningShield) then
-    if HR.Cast(S.LightningShield) then return "lightning_shield 6"; end
+    if HR.Cast(S.LightningShield) then return "lightning_shield precombat"; end
   end
   --actions.precombat+=/stormkeeper,if=talent.stormkeeper.enabled
+  if S.Stormkeeper:IsCastable() and S.Stormkeeper:IsAvailable() then
+    if HR.Cast(S.Stormkeeper) then return "Stormkeeper precombat"; end
+  end
   --actions.precombat+=/windfury_totem
   if S.WindfuryTotem:IsCastable() and Player:BuffDown(S.WindfuryTotemBuff) then
-    if HR.Cast(S.WindfuryTotem) then return "WindfuryTotem 1"; end
+    if HR.Cast(S.WindfuryTotem) then return "WindfuryTotem precombat"; end
   end
   --actions.precombat+=/potion
   --# Snapshot raid buffed stats before combat begins and pre-potting is done.
@@ -396,7 +340,7 @@ local function APL ()
       if HR.Cast(S.FeralSpirit, Settings.Enhancement.GCDasOffGCD.FeralSpirit) then return "FeralSpirit 1"; end
     end
     --actions+=/ascendance
-    if S.Ascendance:IsCastable() and S.Ascendance:IsAvailable() then
+    if S.Ascendance:IsCastable() and S.Ascendance:IsAvailable() and CDsON() then
       if HR.Cast(S.Ascendance, Settings.Enhancement.GCDasOffGCD.Ascendance) then return "Ascendance 1"; end
     end
     --# If only one enemy, priority follows the 'single' action list.
