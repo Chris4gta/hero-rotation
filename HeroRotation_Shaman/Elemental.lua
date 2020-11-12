@@ -218,7 +218,7 @@ local function APL ()
     end
     --actions+=/fire_elemental
     if S.FireElemental:IsCastable() and CDsON() then
-      if HR.Cast(S.FireElemental) then return "FireElemental"; end
+      if HR.Cast(S.FireElemental, Settings.Elemental.GCDasOffGCD.FireElemental) then return "FireElemental 1"; end
     end
     --actions+=/storm_elemental
     if S.StormElemental:IsCastable() and S.StormElemental:IsAvailable() and CDsON() then
