@@ -48,6 +48,10 @@ local Enemies40y, MeleeEnemies10y, MeleeEnemies10yCount, MeleeEnemies5y
 
 local EnemiesFlameShockCount
 
+local function bool(val)
+  return val ~= 0
+end
+
 local function totemFinder()
   for i = 1,6,1
   do
