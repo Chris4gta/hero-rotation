@@ -30,14 +30,6 @@ HR.Commons.Class = Commons
 if not Spell.Shaman then Spell.Shaman = {} end
 Spell.Shaman.Enhancement = {
   -- General Abilities
-  ArcaneTorrent                         = Spell(50613),
-  BloodFury                             = Spell(20572),
-  Berserking                            = Spell(26297),
-  ArcanePulse                           = Spell(260364),
-  LightsJudgment                        = Spell(255647),
-  Fireblood                             = Spell(265221),
-  AncestralCall                         = Spell(274738),
-  BagofTricks                           = Spell(312411),
 
   -- Abilities Shaman
   Bloodlust                             = Spell(2825),
@@ -56,6 +48,12 @@ Spell.Shaman.Enhancement = {
   CapacitorTotem                        = Spell(192058),
 
   -- Racials
+  ArcaneTorrent                         = Spell(50613),
+  BloodFury                             = Spell(20572),
+  Berserking                            = Spell(26297),
+  Fireblood                             = Spell(265221),
+  AncestralCall                         = Spell(274738),
+  BagofTricks                           = Spell(312411),
 
   -- Abilities
   Bloodlust                             = Spell(2825),
@@ -119,14 +117,6 @@ Spell.Shaman.Enhancement = {
 
 Spell.Shaman.Elemental = {
   -- General Abilities
-  ArcaneTorrent                         = Spell(50613),
-  BloodFury                             = Spell(20572),
-  Berserking                            = Spell(26297),
-  ArcanePulse                           = Spell(260364),
-  LightsJudgment                        = Spell(255647),
-  Fireblood                             = Spell(265221),
-  AncestralCall                         = Spell(274738),
-  BagofTricks                           = Spell(312411),
 
   -- Abilities Shaman
   Bloodlust                             = Spell(2825),
@@ -145,6 +135,12 @@ Spell.Shaman.Elemental = {
   CapacitorTotem                        = Spell(192058),
 
   -- Racials
+  ArcaneTorrent                         = Spell(50613),
+  BloodFury                             = Spell(20572),
+  Berserking                            = Spell(26297),
+  Fireblood                             = Spell(265221),
+  AncestralCall                         = Spell(274738),
+  BagofTricks                           = Spell(312411),
 
   -- Abilities
   EarthShock                            = Spell(8042),
@@ -190,5 +186,3 @@ Spell.Shaman.Elemental = {
   -- Macros
 
 }
-
-

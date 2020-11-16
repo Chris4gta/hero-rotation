@@ -170,6 +170,32 @@ local function single()
   end
 end
 
+local function Racials()
+  if (HR.CDsON()) then
+    --actions+=/blood_fury,if=!talent.ascendance.enabled|buff.ascendance.up|cooldown.ascendance.remains>50
+    if S.BloodFury:IsCastable() and ( not S.Ascendance:IsAvailable() or Player:BuffUp(S.Ascendance) or S.Ascendance:CooldownRemains() > 50 ) then
+      if HR.Cast(S.BloodFury, Settings.Commons.OffGCDasOffGCD.Racials) then return "blood_fury racial 1"; end
+    end
+    --actions+=/berserking,if=!talent.ascendance.enabled|buff.ascendance.up
+    if S.BloodFury:IsCastable() and ( not S.Ascendance:IsAvailable() or Player:BuffUp(S.Ascendance) ) then
+      if HR.Cast(S.Berserking, Settings.Commons.OffGCDasOffGCD.Racials) then return "berserking racial 2"; end
+    end
+    --actions+=/ancestral_call,if=!talent.ascendance.enabled|buff.ascendance.up|cooldown.ascendance.remains>50
+    if S.AncestralCall:IsCastable() and ( not S.Ascendance:IsAvailable() or Player:BuffUp(S.Ascendance) or S.Ascendance:CooldownRemains() > 50 ) then
+      if HR.Cast(S.AncestralCall, Settings.Commons.OffGCDasOffGCD.Racials) then return "ancestral_call racial 3"; end
+    end
+    --actions+=/fireblood,if=!talent.ascendance.enabled|buff.ascendance.up|cooldown.ascendance.remains>50
+    if S.Fireblood:IsCastable() and ( not S.Ascendance:IsAvailable() or Player:BuffUp(S.Ascendance) or S.Ascendance:CooldownRemains() > 50 ) then
+      if HR.Cast(S.Fireblood, Settings.Commons.OffGCDasOffGCD.Racials) then return "fireblood racial 4"; end
+    end
+    --actions+=/bag_of_tricks,if=!talent.ascendance.enabled|!buff.ascendance.up
+    if S.BagofTricks:IsCastable() and ( not S.Ascendance:IsAvailable() or not Player:BuffUp(S.Ascendance) ) then
+      if HR.Cast(S.BagofTricks, Settings.Commons.OffGCDasOffGCD.Racials, nil, not Target:SpellInRange(S.BagofTricks)) then return "bag_of_tricks racial 5"; end
+    end
+  end
+end
+
+
 
 --- ======= ACTION LISTS =======
 -- Put here action lists only if they are called multiple times in the APL
@@ -229,6 +255,7 @@ local function APL ()
     --actions+=/fireblood,if=!talent.ascendance.enabled|buff.ascendance.up|cooldown.ascendance.remains>50
     --actions+=/ancestral_call,if=!talent.ascendance.enabled|buff.ascendance.up|cooldown.ascendance.remains>50
     --actions+=/bag_of_tricks,if=!talent.ascendance.enabled|!buff.ascendance.up
+    Racials()
     --actions+=/primordial_wave,if=covenant.necrolord
     --actions+=/vesper_totem,if=covenant.kyrian
     --actions+=/chain_harvest,if=covenant.venthyr
