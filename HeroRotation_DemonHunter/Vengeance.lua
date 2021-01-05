@@ -165,7 +165,7 @@ local function Defensives()
   if S.DoorofShadows:IsCastable() and S.EnduringGloom:IsAvailable() and IsTanking then
     if Cast(S.DoorofShadows, nil, Settings.Commons.DisplayStyle.Covenant) then return "door_of_shadows defensives"; end
   end
-  if S.FelDevastation:IsReady() and S.Demonic:IsAvailable() and Player:HealthPercentage() <= Settings.Vengeance.MetamorphosisHealthThreshold) then
+  if S.FelDevastation:IsReady() and S.Demonic:IsAvailable() and Player:HealthPercentage() <= Settings.Vengeance.MetamorphosisHealthThreshold then
     if Cast(S.FelDevastation, Settings.Vengeance.GCDasOffGCD.FelDevastation, nil, not Target:IsInMeleeRange(20)) then return "fel_devastation defensives"; end
   end
 end
